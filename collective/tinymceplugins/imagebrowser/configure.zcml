@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    i18n_domain="collective.tinymceplugins.imagebrowser">
+
+  <five:registerPackage package="." initialize=".initialize" />
+  
+  <cmf:registerDirectory
+       name="tinymce_plugin_imagebrowser"
+       recursive="True"/>
+
+  <genericsetup:registerProfile
+      name="default"
+      title="TinyMCE alternative imagelink plugin to provide thumbnail image browsing"
+      directory="profiles/default"
+      description="Installs the collective.tinymceplugins.imagebrowser package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+</configure>
