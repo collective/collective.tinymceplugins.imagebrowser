@@ -6,7 +6,7 @@ version = '0.1-dev'
 setup(name='collective.tinymceplugins.imagebrowser',
       version=version,
       description="A TinyMCE plugin to provide thumbnail image browsing",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       classifiers=[
         "Programming Language :: Python",
@@ -24,6 +24,7 @@ setup(name='collective.tinymceplugins.imagebrowser',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'collective.monkeypatcher',
           'Products.TinyMCE >= 1.1.8',
           # -*- Extra requirements: -*-
       ],
