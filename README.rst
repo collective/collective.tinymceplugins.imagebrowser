@@ -1,7 +1,7 @@
 Introduction
 ============
 
-This is a plugin for `TinyMCE`__ editor for Plone.
+This is a plugin for the `TinyMCE`__ editor for Plone.
 
 __ http://plone.org/products/tinymce/
 
