@@ -1,7 +1,7 @@
 /**
- * Plone image plugin based on advimage plugin.
- *
- * @author Rob Gietema
+ * Plone thumbnail image browsing plugin based on the ploneimage plugin 
+ * (part of Products.TinyMCE 1.1.8 by Rob Gietema).
+ * 
  */
 
 (function() {
@@ -32,10 +32,10 @@
 
         getInfo : function() {
             return {
-                longname : 'Plone image',
-                author : 'Rob Gietema',
-                authorurl : 'http://plone.org',
-                infourl : 'http://plone.org/products/tinymce',
+                longname : 'Plone thumbnail image browsing',
+                author : 'Joscha Krutzki',
+                authorurl : '',
+                infourl : '',
                 version : tinymce.majorVersion + "." + tinymce.minorVersion
             };
         }
