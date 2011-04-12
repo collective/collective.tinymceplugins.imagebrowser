@@ -5,7 +5,8 @@
   <script type="text/javascript" src="../../tiny_mce_popup.js"></script>
   <script type="text/javascript" src="../../utils/mctabs.js"></script>
   <script type="text/javascript" src="../../utils/form_utils.js"></script>
-  <script type="text/javascript" src="js/ploneimage.js"></script>
+  <!--<script type="text/javascript" src="/ploneimagebrowser/js/ploneimage.js"></script>-->
+  <script type="text/javascript" src="ploneimagebrowser/js/ploneimage.js"></script>
   <link rel="stylesheet" type="text/css" href="css/ploneimage.css" />
 
 </head>
@@ -57,6 +58,8 @@
 
         <fieldset id="internal_details_panel" class="subPanel column">
           <legend i18n:domain="plone.tinymce" i18n:translate="">Details</legend>
+          <div class="field" id="previewimage_title_container">
+          </div>              
           <div class="field">
             <label i18n:translate="ploneimage_dlg_preview"></label>
             <div class="widget">

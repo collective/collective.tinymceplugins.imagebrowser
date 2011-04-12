@@ -355,6 +355,8 @@ var ImageDialog = {
                 for (var i = 0; i < elm.length; i++) {
                     if (elm[i].value == value) {
                         elm[i].checked = true;
+                        //imagebrowser: mark the selected image thumbnail container
+                        elm[i].parentNode.setAttribute('class', 'imagebrowser_no_folder checked');
                     }
                 }
             } else {
@@ -413,6 +415,9 @@ var ImageDialog = {
                         dimensions.options.add(nd);
                     }
                 }
+                // Add the title to the details view
+                document.getElementById ('previewimage_title_container').innerHTML = data.title;
+
                 this.current_path = path;
                 document.getElementById('internal_details_panel').style.display = 'block';
                 document.getElementById('upload_panel').style.display = 'none';
@@ -433,13 +438,14 @@ var ImageDialog = {
             data : "searchtext=" + document.getElementById('searchtext').value + "&rooted=" + (tinyMCEPopup.editor.settings.rooted ? "True" : "False") + "&document_base_url=" + encodeURIComponent(tinyMCEPopup.editor.settings.document_base_url),
             success : function(text) {
                 var html = "";
+                var image_size = "/" + "image_tile";
                 var data = eval('(' + text + ')');
                 if (data.items.length == 0) {
                     html = labels['label_no_items'];
                 } else {
                     for (var i = 0; i < data.items.length; i++) {
-                        html += '<div class="' + (i % 2 == 0 ? 'even' : 'odd') + '">';
                         if (data.items[i].is_folderish) {
+                            html += '<div class="' + (i % 2 == 0 ? 'even' : 'odd') + '">';
                             if (data.items[i].icon.length) {
                                 html += '<img src="' + data.items[i].icon + '" border="0" style="margin-left: 17px" /> ';
                             }
@@ -448,19 +454,27 @@ var ImageDialog = {
                             html += data.items[i].title;
                             html += '</a>';
                         } else {
-                            html += '<input onclick="ImageDialog.setDetails(\'';
-                            html += data.items[i].url + '\',\'' + data.items[i].title.replace(/'/g, "\\'") + '\');"';
+                            //Check for preselected image thumbnails.
+                            //var che = this.getRadioValue('internallink', 0);
+                            //html += che
+                            //Handle image thumbnail browsing
+                            html += '<div class="imagebrowser_no_folder" id="imagebrowser_con_' + data.items[i].uid + '"';
+                            html += 'onclick="imagebrowser_set_radio_button(\'' + data.items[i].uid + '\');';
+                            //and show the details.
+                            html +=  'ImageDialog.setDetails(\'' + data.items[i].url + '\',\'' + data.items[i].title.replace(/'/g, "\\'") + '\');'
+                            html +=  '">';
+                            html += '<input ';
                             html += ' type="radio" class="noborder" name="internallink" value="';
                             if (tinyMCEPopup.editor.settings.link_using_uids) {
                                 html += "resolveuid/" + data.items[i].uid;
                             } else {
                                 html += data.items[i].url;
                             }
-                            html += '"/> ';
+                            html += '" id="' + "imagebrowser_" + data.items[i].uid + '"/> ';
                             if (data.items[i].icon.length) {
-                                html += '<img src="' + data.items[i].icon + '" border="0"/> ';
+                                html += '<img src="' + data.items[i].url + image_size + '"/ title="' + data.items[i].title + '" border="0"/>';
                             }
-                            html += '<span class="contenttype-' + data.items[i].normalized_type + '">' + data.items[i].title + '</span>';
+                            //html += '<span class="contenttype-' + data.items[i].normalized_type + '">' + data.items[i].title + '</span>';
                         }
                         html += '</div>';
                     }
@@ -569,5 +583,21 @@ function uploadError(error_msg) {
     alert (error_msg);
 }
 
+function imagebrowser_set_radio_button(image_uid) {
+  //If the image thumbnail is clicked, select the hidden radio button,
+  document.getElementById("imagebrowser_" + image_uid).checked=true; 
+  //reset the class of all radio button containers
+  var alldivs = document.getElementsByClassName('imagebrowser_no_folder');
+  for(var i = 0; i < alldivs.length; i++) {
+      alldivs[i].setAttribute('class', 'imagebrowser_no_folder');
+  }
+  //and update the current radio button container class.
+  document.getElementById('imagebrowser_con_' + image_uid).setAttribute('class', 'imagebrowser_no_folder checked'); 
+} 
+ 
+
+
 ImageDialog.preInit();
 tinyMCEPopup.onInit.add(ImageDialog.init, ImageDialog);
+
+
