@@ -5,7 +5,8 @@ version = '0.1-dev'
 
 setup(name='collective.tinymceplugins.imagebrowser',
       version=version,
-      description="A TinyMCE plugin to provide thumbnail image browsing",
+      description="A TinyMCE plugin to provide thumbnail image browsing and a\
+      ressource library",
       long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       classifiers=[
@@ -13,7 +14,7 @@ setup(name='collective.tinymceplugins.imagebrowser',
         "Framework :: Plone",
         "Programming Language :: JavaScript",
         ],
-      keywords='tinymce plugin thumbnail image browsing',
+      keywords='tinymce plugin thumbnail image browsing ressource library',
       author='Joscha Krutzki',
       author_email='joka@jokasis.de',
       url='',
@@ -24,7 +25,7 @@ setup(name='collective.tinymceplugins.imagebrowser',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'collective.monkeypatcher',
+          'rwproperty',
           'Products.TinyMCE >= 1.1.8',
           # -*- Extra requirements: -*-
       ],

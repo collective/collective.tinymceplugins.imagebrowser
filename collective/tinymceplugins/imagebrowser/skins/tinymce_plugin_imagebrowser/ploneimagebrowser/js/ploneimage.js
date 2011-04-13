@@ -362,6 +362,8 @@ var ImageDialog = {
             } else {
                 if (elm.value == value) {
                     elm.checked = true;
+                    //imagebrowser: mark the selected image thumbnail container
+                    elm.parentNode.setAttribute('class', 'imagebrowser_no_folder checked');
                 }
             }
         }

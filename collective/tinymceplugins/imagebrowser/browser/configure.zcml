@@ -1,0 +1,21 @@
+<configure 
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser" 
+    >
+    
+<browser:page
+        for="Products.TinyMCE.interfaces.utility.ITinyMCE"
+        name="tinymce-controlpanel"
+        class=".controlpanel.TinyMCEControlPanelFormExtended"
+        layer=".interfaces.ITinymceImageBrowser"
+        permission="plone.app.controlpanel.TinyMCE"            
+        />
+
+<browser:page
+        for="Products.TinyMCE.interfaces.utility.ITinyMCE"
+        name="imagebrowser_ressources"
+        class=".imagebrowser_ressources.ImagebrowserRessources"
+        permission="zope2.View"
+        /> 
+
+</configure> 

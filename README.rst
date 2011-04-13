@@ -6,13 +6,14 @@ This is a plugin for the `TinyMCE`__ editor for Plone.
 __ http://plone.org/products/tinymce/
 
 It replaces the default *ploneimage* plugin in order to provide image thumbnail
-browsing.
+browsing and a ressource library (preselceted folders).
 
 .. figure:: http://1.png
    :alt: Screenshot of what you see       
 
    How this looks like       
 
+To add entries to the ressource library go to the tinymce controlpanel and click on the library tab.
 
 Dependencies
 ------------

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<layers>
+    <layer name="collective.tinymceplugins.imagebrowser.ITinymceImageBrowser" 
+           interface="collective.tinymceplugins.imagebrowser.browser.interfaces.ITinymceImageBrowser" />
+</layers>
+

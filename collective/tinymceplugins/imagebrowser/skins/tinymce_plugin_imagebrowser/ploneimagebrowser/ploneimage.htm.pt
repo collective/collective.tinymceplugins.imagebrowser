@@ -36,6 +36,23 @@
                   <img alt="" tal:attributes="src string:$portal_url/popup_calendar.gif"/> Recent Items
               </a>
             </li-->
+            <tal:block tal:define="portal here/@@plone_portal_state/portal;
+                                   res python:portal.restrictedTraverse('portal_tinymce/@@imagebrowser_ressources');
+                                   res res/ressources;
+            "> 
+                <tal:loop tal:repeat="re res">
+                  <li tal:define="id python:re[0];
+                                 title python:re[1];
+                                 path python:re[2];
+                  ">
+                    <a tal:attributes="href string: javascript:ImageDialog.displayPanel('internal_panel');; ImageDialog.getFolderListing('${path}', 'tinymce-jsonimagefolderlisting');; ;
+                                       id id;
+                    ">
+                      <span tal:content="title"></span>
+                    </a>
+                  </li>
+                </tal:loop>
+            </tal:block>
                 </ul>
                 <div class="field">
                   <label for="searchtext" i18n:domain="plone.tinymce" i18n:translate="">Search</label>
