@@ -25,7 +25,7 @@ The supported Webbrowsers are: Chrome 10, Konqueror, Firefox 3.6/4, Safari, IE 7
 TODO
 ====
 
-* A uninstall GS step. 
+* A good uninstall GS step. 
 
 
 Authors
