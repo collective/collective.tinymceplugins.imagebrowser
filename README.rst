@@ -6,9 +6,9 @@ This is a plugin for the `TinyMCE`__ editor for Plone.
 __ http://plone.org/products/tinymce/
 
 It replaces the default *ploneimage* plugin in order to provide image thumbnail
-browsing and a ressource library (preselceted folders).
+browsing and a ressource library (preselected folders).
 
-.. figure:: http://1.png
+.. figure:: https://github.com/joka/collective.tinymceplugins.imagebrowser/raw/master/docs/ploneimagebrowser.png
    :alt: Screenshot of what you see       
 
    How this looks like       
@@ -19,17 +19,27 @@ Dependencies
 ------------
 
 This product has been tested with Plone 4.0.4 and TinyMCE 1.1.8.
-The supported Webbrowsers are: Chrome 10, Konqueror, Firefox 3.6/4
+The supported Webbrowsers are: Chrome 10, Konqueror, Firefox 3.6/4, Safari, IE 7/8
 
 
 TODO
 ====
 
-Credits
-=======
+* A uninstall GS step. 
+
 
 Authors
 =======
+
+Joscha Krutzki (joka)
+ 
+
+Credits
+=======
+
+Created on behalf of 4teamwork GmbH (__ http://www.4teamwork.ch)
+
+
 
 
 
