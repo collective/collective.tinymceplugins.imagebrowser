@@ -589,10 +589,20 @@ function imagebrowser_set_radio_button(image_uid) {
   //If the image thumbnail is clicked, select the hidden radio button,
   document.getElementById("imagebrowser_" + image_uid).checked=true; 
   //reset the class of all radio button containers
-  var alldivs = document.getElementsByClassName('imagebrowser_no_folder');
-  for(var i = 0; i < alldivs.length; i++) {
+  if(document.getElementsByClassName) {  // For non IE browsers  
+    var alldivs = document.getElementsByClassName('imagebrowser_no_folder');
+    for(var i = 0; i < alldivs.length; i++) {
       alldivs[i].setAttribute('class', 'imagebrowser_no_folder');
+    }   
   }
+  else {  // For IE browsers < IE9
+    d= document.getElementsByTagName("div");
+        L= d.length;
+        while(L){
+            tem= d[--L];
+            if(tem.className.indexOf("checked")!=-1) tem.setAttribute('class', 'imagebrowser_no_folder');
+        }
+  } 
   //and update the current radio button container class.
   document.getElementById('imagebrowser_con_' + image_uid).setAttribute('class', 'imagebrowser_no_folder checked'); 
 } 
