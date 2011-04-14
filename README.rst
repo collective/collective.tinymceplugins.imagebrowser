@@ -19,7 +19,7 @@ Dependencies
 ------------
 
 This product has been tested with Plone 4.0.4 and TinyMCE 1.1.8.
-The supported Webbrowsers are: Chrome 10, Konqueror, Firefox 3.6/4, Safari, IE 7/8
+The supported Webbrowsers are: Chrome 10, Konqueror, Firefox 3.6/4, Safari, IE 8/9.
 
 
 TODO
@@ -37,7 +37,7 @@ Joscha Krutzki (joka)
 Credits
 =======
 
-Created on behalf of 4teamwork GmbH (__ http://www.4teamwork.ch)
+Created on behalf of 4teamwork GmbH (http://www.4teamwork.ch)
 
 
 
