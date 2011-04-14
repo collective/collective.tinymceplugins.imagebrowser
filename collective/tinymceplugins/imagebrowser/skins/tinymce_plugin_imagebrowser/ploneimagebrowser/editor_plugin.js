@@ -15,7 +15,7 @@
 
                 ed.windowManager.open({
                     file : url + '/ploneimage.htm',
-                    width : 820 + parseInt(ed.getLang('ploneimage.delta_width', 0)),
+                    width : 846 + parseInt(ed.getLang('ploneimage.delta_width', 0)),
                     height : 550 + parseInt(ed.getLang('ploneimage.delta_height', 0)),
                     inline : 1
                 }, {

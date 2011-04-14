@@ -1,7 +1,7 @@
 #internalpath { margin: 0 0 10px 10px; height: 2em; }
 .columnlibraries { width: 120px; }
 .searchButton, #upload { margin-top: 4px; }
-.subPanel { width: 296px; }
+.subPanel { width: 322px; }
 .uponelevel { height: 22px; }
 #uponelevel { line-height: 1em; }
 #internal_details_panel { width: 190px; display: none; }
@@ -11,7 +11,7 @@
 #internallinkcontainer { height: 240px; }
 
 #previewimage_title_container {font-weight: bold;}
-.imagebrowser_no_folder { float: left; margin-top: 0.5em; height: 64px;}
+.imagebrowser_no_folder { float: left; margin-top: 0.5em; margin-right: 4px; height: 64px; width: 64px;}
 .imagebrowser_no_folder input { display: none;}
 .imagebrowser_no_folder img { border: 3px solid transparent;}
 .checked img, .imagebrowser_no_folder img:hover {border: 3px solid red;}

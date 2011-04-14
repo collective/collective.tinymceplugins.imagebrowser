@@ -37,6 +37,7 @@
               </a>
             </li-->
             <tal:block tal:define="portal here/@@plone_portal_state/portal;
+                                   portal_url here/@@plone_portal_state/portal_url; 
                                    res python:portal.restrictedTraverse('portal_tinymce/@@imagebrowser_ressources');
                                    res res/ressources;
             "> 
@@ -44,10 +45,12 @@
                   <li tal:define="id python:re[0];
                                  title python:re[1];
                                  path python:re[2];
+                                 icon python:len(re)>3 and re[3];
                   ">
                     <a tal:attributes="href string: javascript:ImageDialog.displayPanel('internal_panel');; ImageDialog.getFolderListing('${path}', 'tinymce-jsonimagefolderlisting');; ;
                                        id id;
                     ">
+                      <img tal:condition="icon" src="" tal:attributes="src python: portal_url + icon;" />
                       <span tal:content="title"></span>
                     </a>
                   </li>
