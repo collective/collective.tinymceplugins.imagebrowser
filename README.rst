@@ -8,7 +8,7 @@ __ http://plone.org/products/tinymce/
 It replaces the default *ploneimage* plugin in order to provide image thumbnail
 browsing and a ressource library (preselected folders).
 
-.. figure:: https://github.com/joka/collective.tinymceplugins.imagebrowser/raw/master/docs/ploneimagebrowser.png
+.. figure:: https://github.com/collective/collective.tinymceplugins.imagebrowser/raw/master/docs/ploneimagebrowser.png
    :alt: Screenshot of what you see       
 
    How this looks like       
