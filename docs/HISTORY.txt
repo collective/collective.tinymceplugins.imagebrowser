@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0b2 (unreleased)
+1.0b2 (2011-06-08)
 ------------------
 
 - Fix broken release by also including non-Python files.
