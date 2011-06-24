@@ -4,7 +4,13 @@ Changelog
 1.0b3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Do not load TinyMCE profile as it's applied by Plone anyway and it would
+  reset various settings.
+  [buchi]
+
+- Added upgrade step to fix the category of the imaging controlpanel which was
+  wrongly set by previous versions loading the TinyMCE profile.
+  [buchi]
 
 
 1.0b2 (2011-06-08)

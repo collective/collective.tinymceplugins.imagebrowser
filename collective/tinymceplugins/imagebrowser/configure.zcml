@@ -25,6 +25,28 @@
        provides="Products.GenericSetup.interfaces.EXTENSION"
        />
 
+  <genericsetup:registerProfile
+      name="to1beta3"
+      title="Upgrade profile for TinyMCE image browser plugin from 1.0b1 to 1.0b3"
+      description="" 
+      directory="profiles/to1beta3"
+      for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:upgradeSteps
+      source="1.0b1"
+      destination="1003"
+      profile="collective.tinymceplugins.imagebrowser:default">
+
+        <genericsetup:upgradeStep
+          title="Miscellaneous"
+          description=""
+          handler=".upgrades.to1beta3"
+          />
+
+    </genericsetup:upgradeSteps>
+
   <adapter
        for="Products.TinyMCE.interfaces.utility.ITinyMCE"
        provides="collective.tinymceplugins.imagebrowser.interfaces.ITinyMCELibrariesExtended"
