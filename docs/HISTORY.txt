@@ -4,7 +4,8 @@ Changelog
 1.0b4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Merged in Products.TinyMCE image plugin 1.2.8 (Plone 4.1).
+  [joka]
 
 
 1.0b3 (2011-06-24)

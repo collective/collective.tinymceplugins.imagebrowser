@@ -18,7 +18,7 @@ To add entries to the ressource library go to the tinymce controlpanel and click
 Dependencies
 ------------
 
-This product has been tested with Plone 4.0.4 and TinyMCE 1.1.8.
+This product has been tested with Plone 4.1.2 and TinyMCE 1.2.8.
 The supported Webbrowsers are: Chrome 10, Konqueror, Firefox 3.6/4, Safari, IE 8/9.
 
 
