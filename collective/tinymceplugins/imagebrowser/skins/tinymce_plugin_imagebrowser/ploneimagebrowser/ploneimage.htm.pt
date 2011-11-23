@@ -81,7 +81,6 @@
           <div class="field" id="previewimage_title_container">
           </div>              
           <div class="field">
-            <label i18n:translate="ploneimage_dlg_preview"></label>
             <div class="widget">
               <div id="previewimagecontainer">
               </div>
@@ -89,9 +88,10 @@
           </div>
 
           <div class="field">
-            <label id="altlabel" for="alt" i18n:translate="ploneimage_dlg_alt"></label>
+            <label id="descriptionlabel" for="description" i18n:translate="ploneimage_dlg_alt"></label>
             <div class="widget">
-              <input id="alt" name="alt" type="text" value="" size="20" />
+              <input id="description_href" name="description_href" type="hidden" value="" />
+              <input id="description" name="description" type="text" value="" size="20" />
             </div>
           </div>
 

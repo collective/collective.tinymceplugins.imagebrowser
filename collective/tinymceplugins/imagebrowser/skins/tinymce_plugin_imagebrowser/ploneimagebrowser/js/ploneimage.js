@@ -4,6 +4,7 @@ var ImageDialog = {
     current_url : "",
     current_class : "",
     labels : "",
+    thumb_url : null,
     
     preInit : function() {
         var url;
@@ -42,13 +43,17 @@ var ImageDialog = {
             if (href.indexOf('/')) {
                 var href_array = href.split('/');
                 var last = href_array[href_array.length-1];
+                var pos = href.indexOf('@@images/image/');
                 if (last.indexOf('image_') != -1) {
-                    var dimensions = href_array.pop();
+                    var dimensions = '@@images/image/' + href_array.pop().substring(6);
                     selectByValue(f0, 'dimensions', dimensions, true);
                     href = href_array.join ('/');
+                } else if (pos != -1) {
+                    var dimensions = href.substring(pos);
+                    selectByValue(f0, 'dimensions', dimensions, true);
+                    href = href.substring(0, pos - 1);
                 }
             }
-            var alt = dom.getAttrib(n, 'alt');
             var classnames = dom.getAttrib(n, 'class').split(' ');
             var classname = "";
             for (var i = 0; i < classnames.length; i++) {
@@ -64,19 +69,22 @@ var ImageDialog = {
                     ImageDialog.current_class = classnames[i];
                 }
             }
-            nl0.alt.value = alt;
             selectByValue(f0, 'classes', classname, true);
             nl2.insert.value = ed.getLang('update');
 
 
             if (href.indexOf('resolveuid') != -1) {
-                current_uid = href.split('resolveuid/')[1];
+                var current_uid = href.split('resolveuid/')[1];
                 tinymce.util.XHR.send({
                     url : tinyMCEPopup.editor.settings.portal_url + '/portal_tinymce/tinymce-getpathbyuid?uid=' + current_uid,
                     type : 'GET',
                     success : function(text) {
                         ImageDialog.current_url = ImageDialog.getAbsoluteUrl(tinyMCEPopup.editor.settings.document_base_url, text);
-                        ImageDialog.current_link = href;
+                        if (tinyMCEPopup.editor.settings.link_using_uids) {
+                            ImageDialog.current_link = href;
+                        } else {
+                            ImageDialog.current_link = ImageDialog.current_url;
+                        }
                         ImageDialog.getFolderListing(ImageDialog.getParentUrl(ImageDialog.current_url), 'tinymce-jsonimagefolderlisting');
                     }
                 });
@@ -90,9 +98,28 @@ var ImageDialog = {
         }
     },
 
+    getSelectedImageUrl: function() {
+        // This method provides a single entry point.
+
+        // First, try to get the URL corresponding to the image that the user
+        // selected in the center pane.
+        var href = this.getRadioValue('internallink', 0);
+
+        if (href == '') {
+            // The user didn't select an image from the center pane.  So we
+            // default to the URL for the thumbnail image in the right pane.
+            href = ImageDialog.thumb_url;
+            if (href != null) {
+                href = href.substring(0, href.indexOf('/@@'));
+            }
+        }
+        return href;
+    },
+
     insert : function() {
         var ed = tinyMCEPopup.editor, t = this, f = document.forms[0];
-        var href = this.getRadioValue('internallink', 0);
+        // var href = this.getRadioValue('internallink', 0);
+        var href = t.getSelectedImageUrl();
 
         if (href === '') {
             if (ed.selection.getNode().nodeName == 'IMG') {
@@ -125,14 +152,14 @@ var ImageDialog = {
         if (tinymce.isWebKit)
             ed.getWin().focus();
             
-        var href = this.getRadioValue('internallink', 0);
+        // var href = this.getRadioValue('internallink', 0);
+        var href = this.getSelectedImageUrl();
         var dimensions = this.getSelectValue(f0, 'dimensions');
         if (dimensions != "") {
             href += '/' + dimensions;
         }
         args = {
             src : href,
-            alt : nl0.alt.value,
             'class' : this.getSelectValue(f0, 'classes') +
                 ((ed.settings.allow_captioned_images && f0.elements['caption'].checked) ? ' captioned' : '') +
                 (ImageDialog.current_class == '' ? '' : ' ' + ImageDialog.current_class)
@@ -148,6 +175,16 @@ var ImageDialog = {
             ed.dom.setAttrib('__mce_tmp', 'id','');
             ed.undoManager.add();
         }
+
+        var description_href = nl0.description_href.value;
+        var description = nl0.description.value;
+        var data = "description=" + encodeURIComponent(description);
+        tinymce.util.XHR.send({
+            url : description_href + '/tinymce-setDescription',
+            content_type : "application/x-www-form-urlencoded",
+            type : "POST",
+            data : data
+        });
 
         tinyMCEPopup.close();
     },
@@ -379,7 +416,22 @@ var ImageDialog = {
     },
 
     setDetails : function(path,title) {
-        // Sends a low level Ajax request
+        // Sends a low level AJAX request.
+
+        // If our AJAX call succeeds and we get a thumbnail image to display in
+        // the right pane, we save that thumbnail image's URL directly on the
+        // ImageDialog object for posterity.  Later, we may need the thumbnail
+        // image's URL in this case:
+        //
+        //  1. The user clicks an image and clicks the "edit image" button.
+        //  2. The user doesn't select any image from the center pane.
+        //  3. The user clicks the "update" button.
+        //
+        // We always try to use the image that the user selects in the center
+        // pane first.  But as in the above case, if the user selects no image
+        // in the center pane, we fall back to the thumbnailed image.
+        ImageDialog.thumb_url = null;
+
         tinymce.util.XHR.send({
             url : path + '/tinymce-jsondetails',
             type : 'POST',
@@ -396,9 +448,11 @@ var ImageDialog = {
                 if (data.thumb == "") {
                     document.getElementById ('previewimagecontainer').innerHTML = data.description;
                 } else {
-                    document.getElementById ('previewimagecontainer').innerHTML = '<img src="' + data.thumb + '" border="0" />';
+                    ImageDialog.thumb_url = data.thumb;
+                    //document.getElementById ('previewimagecontainer').innerHTML = '<img src="' + data.thumb + '" border="0" />';
                 }
-                document.getElementById ('alt').value = (data.description) ? data.description : data.title ;
+                document.getElementById('description').value = data.description;
+                document.getElementById('description_href').value = path;
                 if (data.scales) {
                     var dimensions = document.getElementById('dimensions');
                     var newdimensions = [];
@@ -440,14 +494,17 @@ var ImageDialog = {
             data : "searchtext=" + document.getElementById('searchtext').value + "&rooted=" + (tinyMCEPopup.editor.settings.rooted ? "True" : "False") + "&document_base_url=" + encodeURIComponent(tinyMCEPopup.editor.settings.document_base_url),
             success : function(text) {
                 var html = "";
-                var image_size = "/" + "image_tile";
+                var image_size = "/" + "@@images/image/tile";
                 var data = eval('(' + text + ')');
                 if (data.items.length == 0) {
                     html = labels['label_no_items'];
                 } else {
                     for (var i = 0; i < data.items.length; i++) {
+                        if (data.items[i].url == ImageDialog.current_link && tinyMCEPopup.editor.settings.link_using_uids) {
+                            ImageDialog.current_link = 'resolveuid/' + data.items[i].uid;
+                        }
+                        html += '<div class="' + (i % 2 == 0 ? 'even' : 'odd') + '">';
                         if (data.items[i].is_folderish) {
-                            html += '<div class="' + (i % 2 == 0 ? 'even' : 'odd') + '">';
                             if (data.items[i].icon.length) {
                                 html += '<img src="' + data.items[i].icon + '" border="0" style="margin-left: 17px" /> ';
                             }
@@ -611,5 +668,3 @@ function imagebrowser_set_radio_button(image_uid) {
 
 ImageDialog.preInit();
 tinyMCEPopup.onInit.add(ImageDialog.init, ImageDialog);
-
-

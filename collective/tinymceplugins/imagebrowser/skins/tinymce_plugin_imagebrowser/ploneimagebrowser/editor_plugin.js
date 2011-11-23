@@ -1,6 +1,6 @@
 /**
  * Plone thumbnail image browsing plugin based on the ploneimage plugin 
- * (part of Products.TinyMCE 1.1.8 by Rob Gietema).
+ * (part of Products.TinyMCE 1.2.8 by Rob Gietema).
  * 
  */
 
