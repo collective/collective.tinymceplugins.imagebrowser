@@ -499,10 +499,13 @@ var ImageDialog = {
                 if (data.items.length == 0) {
                     html = labels['label_no_items'];
                 } else {
+                    var html_listed_images = '';
                     for (var i = 0; i < data.items.length; i++) {
+                        //no folder content
                         if (data.items[i].url == ImageDialog.current_link && tinyMCEPopup.editor.settings.link_using_uids) {
                             ImageDialog.current_link = 'resolveuid/' + data.items[i].uid;
                         }
+                        //folderish folder content
                         if (data.items[i].is_folderish) {
                             html += '<div class="imagebrowser_folder ' + (i % 2 == 0 ? 'even' : 'odd') + '">';
                             if (data.items[i].icon.length) {
@@ -512,31 +515,33 @@ var ImageDialog = {
                             html += 'href="javascript:ImageDialog.getFolderListing(\'' + data.items[i].url + '\',\'tinymce-jsonimagefolderlisting' + '\')">';
                             html += data.items[i].title;
                             html += '</a>';
+                            html += '</div>';
+                        //non folderish folder content
                         } else {
                             //Check for preselected image thumbnails.
-                            //var che = this.getRadioValue('internallink', 0);
-                            //html += che
                             //Handle image thumbnail browsing
-                            html += '<div class="imagebrowser_no_folder" id="imagebrowser_con_' + data.items[i].uid + '"';
-                            html += 'onclick="imagebrowser_set_radio_button(\'' + data.items[i].uid + '\');';
+                            html_listed_images += '<div class="imagebrowser_no_folder" id="imagebrowser_con_' + data.items[i].uid + '"';
+                            html_listed_images += 'onclick="imagebrowser_set_radio_button(\'' + data.items[i].uid + '\');';
                             //and show the details.
-                            html +=  'ImageDialog.setDetails(\'' + data.items[i].url + '\',\'' + data.items[i].title.replace(/'/g, "\\'") + '\');'
-                            html +=  '">';
-                            html += '<input ';
-                            html += ' type="radio" class="noborder" name="internallink" value="';
+                            html_listed_images +=  'ImageDialog.setDetails(\'' + data.items[i].url + '\',\'' + data.items[i].title.replace(/'/g, "\\'") + '\');'
+                            html_listed_images +=  '">';
+                            html_listed_images += '<input ';
+                            html_listed_images += ' type="radio" class="noborder" name="internallink" value="';
                             if (tinyMCEPopup.editor.settings.link_using_uids) {
-                                html += "resolveuid/" + data.items[i].uid;
+                                html_listed_images += "resolveuid/" + data.items[i].uid;
                             } else {
-                                html += data.items[i].url;
+                                html_listed_images += data.items[i].url;
                             }
-                            html += '" id="' + "imagebrowser_" + data.items[i].uid + '"/> ';
+                            html_listed_images += '" id="' + "imagebrowser_" + data.items[i].uid + '"/> ';
                             if (data.items[i].icon.length) {
-                                html += '<img src="' + data.items[i].url + image_size + '"/ title="' + data.items[i].title + '" border="0"/>';
-                            }
-                            //html += '<span class="contenttype-' + data.items[i].normalized_type + '">' + data.items[i].title + '</span>';
+                                html_listed_images += '<img src="' + data.items[i].url + image_size + '"/ title="' + data.items[i].title + '" border="0"/>';
+                            } 
+                            html_listed_images += '</div>';
                         }
-                        html += '</div>';
                     }
+                    //add non folderish folder content to output
+                    html += html_listed_images; 
+
                 }
                 document.getElementById ('internallinkcontainer').innerHTML = html;
                 if (data.parent_url == "") {

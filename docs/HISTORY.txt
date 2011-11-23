@@ -4,6 +4,8 @@ Changelog
 1.0b4 (unreleased)
 ------------------
 
+- List all folders first, then all images, float only images. 
+  [joka] 
 - Merged in Products.TinyMCE image plugin 1.2.8 (Plone 4.1).
   [joka]
 
