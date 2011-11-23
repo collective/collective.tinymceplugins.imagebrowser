@@ -15,3 +15,4 @@
 .imagebrowser_no_folder input { display: none;}
 .imagebrowser_no_folder img { border: 3px solid transparent;}
 .checked img, .imagebrowser_no_folder img:hover {border: 3px solid red;}
+.imagebrowser_folder { clear:both;}

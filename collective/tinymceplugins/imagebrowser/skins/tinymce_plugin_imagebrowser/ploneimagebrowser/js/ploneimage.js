@@ -504,7 +504,7 @@ var ImageDialog = {
                             ImageDialog.current_link = 'resolveuid/' + data.items[i].uid;
                         }
                         if (data.items[i].is_folderish) {
-                            html += '<div class="' + (i % 2 == 0 ? 'even' : 'odd') + '">';
+                            html += '<div class="imagebrowser_folder ' + (i % 2 == 0 ? 'even' : 'odd') + '">';
                             if (data.items[i].icon.length) {
                                 html += '<img src="' + data.items[i].icon + '" border="0" style="margin-left: 17px" /> ';
                             }
