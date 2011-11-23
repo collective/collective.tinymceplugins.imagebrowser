@@ -81,6 +81,7 @@
           <div class="field" id="previewimage_title_container">
           </div>              
           <div class="field">
+            <label i18n:translate="ploneimage_dlg_preview"></label>
             <div class="widget">
               <div id="previewimagecontainer">
               </div>

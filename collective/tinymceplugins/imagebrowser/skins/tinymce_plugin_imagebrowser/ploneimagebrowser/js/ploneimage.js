@@ -449,7 +449,7 @@ var ImageDialog = {
                     document.getElementById ('previewimagecontainer').innerHTML = data.description;
                 } else {
                     ImageDialog.thumb_url = data.thumb;
-                    //document.getElementById ('previewimagecontainer').innerHTML = '<img src="' + data.thumb + '" border="0" />';
+                    document.getElementById ('previewimagecontainer').innerHTML = '<img src="' + data.thumb + '" border="0" />';
                 }
                 document.getElementById('description').value = data.description;
                 document.getElementById('description_href').value = path;
@@ -503,8 +503,8 @@ var ImageDialog = {
                         if (data.items[i].url == ImageDialog.current_link && tinyMCEPopup.editor.settings.link_using_uids) {
                             ImageDialog.current_link = 'resolveuid/' + data.items[i].uid;
                         }
-                        html += '<div class="' + (i % 2 == 0 ? 'even' : 'odd') + '">';
                         if (data.items[i].is_folderish) {
+                            html += '<div class="' + (i % 2 == 0 ? 'even' : 'odd') + '">';
                             if (data.items[i].icon.length) {
                                 html += '<img src="' + data.items[i].icon + '" border="0" style="margin-left: 17px" /> ';
                             }
