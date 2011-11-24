@@ -1,6 +1,6 @@
 import unittest
-from zope.component import getUtility 
-from zope.interface.verify import verifyObject 
+from zope.component import getUtility
+from zope.interface.verify import verifyObject
 
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
@@ -16,7 +16,7 @@ REGISTRY_KEY = 'collective.tinymceplugins.imagebrowser.interfaces.ITinyMCELibrar
 
 class TestSetup(testing.TestCase):
     """Test installation of collective.tinymceplugins.imagebrowser"""
-        
+
     def test_skin_folder_registered(self):
         """Test if all ./skins folders are registered in order"""
         skins = getToolByName(self.portal, 'portal_skins')
@@ -31,14 +31,14 @@ class TestSetup(testing.TestCase):
         self.assert_(resources == [])
 
     def test_tinymce_adapter_interface(self):
-        tmce = getUtility(ITinyMCE) 
+        tmce = getUtility(ITinyMCE)
         adapter = ITinyMCELibrariesExtended(tmce)
-        self.assert_(ITinyMCELibrariesExtended.providedBy(adapter))   
+        self.assert_(ITinyMCELibrariesExtended.providedBy(adapter))
         self.assert_(verifyObject(ITinyMCELibrariesExtended, adapter))
 
     def test_tinymce_adapter_getting_values(self):
         registry = getUtility(IRegistry)
-        tmce = getUtility(ITinyMCE) 
+        tmce = getUtility(ITinyMCE)
         adapter = ITinyMCELibrariesExtended(tmce)
         self.assert_(adapter.imagebrowser_resources == u"")
         registry[REGISTRY_KEY] = [u"id"]
@@ -46,7 +46,7 @@ class TestSetup(testing.TestCase):
 
     def test_tinymce_adapter_setting_values(self):
         registry = getUtility(IRegistry)
-        tmce = getUtility(ITinyMCE) 
+        tmce = getUtility(ITinyMCE)
         adapter = ITinyMCELibrariesExtended(tmce)
         adapter.imagebrowser_resources = u"id2\nid3"
         self.assert_(registry[REGISTRY_KEY] == [u"id2", u"id3"])
@@ -54,7 +54,7 @@ class TestSetup(testing.TestCase):
     def test_tinymce_controlpanel(self):
         panel = self.portal.unrestrictedTraverse('portal_tinymce/@@tinymce-controlpanel')
         html = panel.render()
-        self.assert_(html)   
+        self.assert_(html)
 
     def test_tinymce_imagebrowser_resource_view(self):
         registry = getUtility(IRegistry)

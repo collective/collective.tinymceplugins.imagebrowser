@@ -14,6 +14,7 @@ import collective.tinymceplugins.imagebrowser
 ptc.installProduct('collective.tinymceplugins.imagebrowser')
 ptc.setupPloneSite(products=('collective.tinymceplugins.imagebrowser',))
 
+
 class TestCase(ptc.PloneTestCase):
     class layer(PloneSite):
         @classmethod
