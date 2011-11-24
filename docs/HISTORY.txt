@@ -4,6 +4,8 @@ Changelog
 1.0b4 (unreleased)
 ------------------
 
+- added englisch translation files 
+  [joka]
 - Changed message ids, default translations
   [joka]
 - Upgrade step to migrate to plone.registry 

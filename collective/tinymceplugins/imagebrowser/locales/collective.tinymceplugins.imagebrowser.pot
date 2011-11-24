@@ -1,0 +1,33 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# collective.tinymceplugins.imagebrowser.
+# proventis <info@proventis.net> 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.tinymceplugins.imagebrowser\n"
+"POT-Creation-Date: 2011-11-24 16:15+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: proventis <info@proventis.net>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.tinymceplugins.imagebrowser\n"
+
+#: collective.tinymceplugins.imagebrowser/collective/tinymceplugins/imagebrowser/browser/interfaces.py:15
+#: collective.tinymceplugins.imagebrowser/collective/tinymceplugins/imagebrowser/interfaces.py:12
+msgid "Image Resources"
+msgstr ""
+
+#. Default: "Enter a list of resources to appear in the link image dialog. The format is id|title|path_to_folder|path_to_icon, one per line. An example path_to_folder is 'Plone/picture', an example path_to_icon is '/logoIcon.gif'. The path_to_icon is optional."
+#: collective.tinymceplugins.imagebrowser/collective/tinymceplugins/imagebrowser/browser/interfaces.py:16
+msgid "Image Resources Description"
+msgstr ""
+
+#: collective.tinymceplugins.imagebrowser/collective/tinymceplugins/imagebrowser/browser/controlpanel.py:18
+msgid "Libraries"
+msgstr ""
+
