@@ -47,4 +47,17 @@
 
     </genericsetup:upgradeSteps>
 
+  <genericsetup:upgradeSteps
+      source="*"
+      destination="1004"
+      profile="collective.tinymceplugins.imagebrowser:default">
+
+        <genericsetup:upgradeStep
+          title="migrate to plone.registry"
+          description="Use plone.registry instead of the TinyMCE object to store the image liberary resources."
+          handler=".upgrades.to1beta4"
+          />
+
+  </genericsetup:upgradeSteps>
+
 </configure>
