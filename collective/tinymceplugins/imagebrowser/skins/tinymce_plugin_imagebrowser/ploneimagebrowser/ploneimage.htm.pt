@@ -38,8 +38,8 @@
             </li-->
             <tal:block tal:define="portal here/@@plone_portal_state/portal;
                                    portal_url here/@@plone_portal_state/portal_url; 
-                                   res python:portal.restrictedTraverse('portal_tinymce/@@imagebrowser_ressources');
-                                   res res/ressources;
+                                   res python:portal.restrictedTraverse('portal_tinymce/@@imagebrowser_resources');
+                                   res res/resources;
             "> 
                 <tal:loop tal:repeat="re res">
                   <li tal:define="id python:re[0];

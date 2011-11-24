@@ -13,8 +13,8 @@
 
 <browser:page
         for="Products.TinyMCE.interfaces.utility.ITinyMCE"
-        name="imagebrowser_ressources"
-        class=".imagebrowser_ressources.ImagebrowserRessources"
+        name="imagebrowser_resources"
+        class=".imagebrowser_resources.ImagebrowserResources"
         permission="zope2.View"
         /> 
 
