@@ -3,7 +3,7 @@ from plone.fieldsets.fieldsets import FormFieldsets
 
 from Products.TinyMCE.browser.controlpanel import TinyMCEControlPanelForm
 from Products.TinyMCE.interfaces.utility import ITinyMCELibraries
-from collective.tinymceplugins.imagebrowser.interfaces import \
+from collective.tinymceplugins.imagebrowser.browser.interfaces import \
         ITinyMCELibrariesExtended
 
 _ = MessageFactory('plone.tinymce')

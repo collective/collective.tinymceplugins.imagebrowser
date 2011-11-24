@@ -7,7 +7,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.TinyMCE.interfaces.utility import ITinyMCE
 
 from collective.tinymceplugins.imagebrowser import testing
-from collective.tinymceplugins.imagebrowser.interfaces import \
+from collective.tinymceplugins.imagebrowser.browser.interfaces import \
         ITinyMCELibrariesExtended
 
 

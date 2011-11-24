@@ -47,11 +47,4 @@
 
     </genericsetup:upgradeSteps>
 
-  <adapter
-       for="Products.TinyMCE.interfaces.utility.ITinyMCE"
-       provides="collective.tinymceplugins.imagebrowser.interfaces.ITinyMCELibrariesExtended"
-       factory=".adapter.TinyMCEExtendedAdapter"
-       />       
-
-       <!--factory="collective.tinymceplugins.adapters.TinyMCEExtendedAdapter"-->
 </configure>

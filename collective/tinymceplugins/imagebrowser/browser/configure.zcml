@@ -18,4 +18,10 @@
         permission="zope2.View"
         /> 
 
+<adapter
+       for="Products.TinyMCE.interfaces.utility.ITinyMCE"
+       provides=".interfaces.ITinyMCELibrariesExtended"
+       factory=".adapter.TinyMCEExtendedAdapter"
+       />       
+
 </configure> 

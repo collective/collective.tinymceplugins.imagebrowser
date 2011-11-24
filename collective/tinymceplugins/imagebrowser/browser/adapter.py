@@ -7,10 +7,10 @@ from zope.component import getUtility
 from plone.registry.interfaces import IRegistry
 from Products.TinyMCE.interfaces.utility import ITinyMCELibraries
 
-from collective.tinymceplugins.imagebrowser.interfaces import (
-        ITinyMCELibrariesExtended,
+from collective.tinymceplugins.imagebrowser.browser.interfaces import \
+        ITinyMCELibrariesExtended
+from collective.tinymceplugins.imagebrowser.interfaces import \
         ITinyMCELibrariesImageResources
-        )
 
 
 class TinyMCEExtendedAdapter(object):
