@@ -12,10 +12,13 @@ class ITinymceImageBrowser(Interface):
 class ITinyMCELibrariesExtended(Interface):
 
     imagebrowser_resources = schema.Text(
-        title=_(u"Image Ressources"),
-        description=_(u"""Enter a list of resources to appear in the link image
-            dialog. The format is id|title|path_to_folder|path_to_icon, one per
-            line. An example path_to_folder is "PloneRoot/pictures", an example
-            path_to_icon is "/logoIcon.gif". The path_to_icon is optional.
-            """),
+        title=_(u"Image Resources", default="Image Resources"),
+        description=_(u"Image Resources Description", 
+                      default=u"Enter a list of resources to appear in the link"
+                              u" image dialog. The format is "
+                              u"id|title|path_to_folder|path_to_icon, one per "
+                              u"line. An example path_to_folder is "
+                              u"'Plone/picture', an example path_to_icon is "
+                              u"'/logoIcon.gif'. The path_to_icon is optional."
+                     ),
         required=False)

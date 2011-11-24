@@ -4,11 +4,13 @@ Changelog
 1.0b4 (unreleased)
 ------------------
 
-- upgrade step to migrate to plone.registry 
+- Changed message ids, default translations
   [joka]
-- use plone.registry instead of TinyMCE object to store image resource entries
+- Upgrade step to migrate to plone.registry 
   [joka]
-- fixed wording
+- Use plone.registry instead of TinyMCE object to store image resource entries
+  [joka]
+- Fixed wording
   [joka]
 - List all folders first, then all images, float only images. 
   [joka] 
