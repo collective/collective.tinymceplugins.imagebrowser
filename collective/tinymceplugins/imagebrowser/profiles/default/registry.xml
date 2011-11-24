@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<registry>
+  <records interface="collective.tinymceplugins.imagebrowser.interfaces.ITinyMCELibrariesImageResources" />
+  <record interface="collective.tinymceplugins.imagebrowser.interfaces.ITinyMCELibrariesImageResources" field="imagebrowser_resources">
+    <value purge="false">
+       <!--Add news image library resources with the following format:-->
+       <!--<element>id|plone/imagefolder|title|pathtoicon</element>-->
+    </value>
+  </record>
+</registry>
+
