@@ -4,6 +4,10 @@ Changelog
 1.0b4 (unreleased)
 ------------------
 
+- use plone.registry instead of TinyMCE object to store image resource entries
+  [joka]
+- fixed wording
+  [joka]
 - List all folders first, then all images, float only images. 
   [joka] 
 - Merged in Products.TinyMCE image plugin 1.2.8 (Plone 4.1).
