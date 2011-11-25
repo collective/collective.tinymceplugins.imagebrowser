@@ -1,10 +1,15 @@
 Changelog
 =========
 
+1.0b5 (unreleased)
+------------------
+ 
+* Fixed wording [joka]
+
 1.0b4 (2011-11-24)
 ------------------
 
-- added englisch translation files 
+- Added english translation files 
   [joka]
 - Changed message ids, default translations
   [joka]
