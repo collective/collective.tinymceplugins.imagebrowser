@@ -158,14 +158,28 @@ var ImageDialog = {
         if (dimensions != "") {
             href += '/' + dimensions;
         }
+
+        el = ed.selection.getNode();
+        var elementClasses = el.className.split(' ');
+        var templateClassArray = Array ();
+        for (var i = 0; i < elementClasses.length; i++) {
+        	var clazz = elementClasses[i];
+        	if (clazz == ImageDialog.current_class) {
+        		continue;
+        	}
+        	if ((clazz == 'image-inline') || (clazz == 'image-left') || (clazz == 'image-right')) {
+        		continue;
+        	}
+        	templateClassArray[templateClassArray.length] = clazz;
+        }
+        var templateClasses = templateClassArray.join(' ') + ' ';
+        	
         args = {
             src : href,
-            'class' : this.getSelectValue(f0, 'classes') +
+            'class' : templateClasses + this.getSelectValue(f0, 'classes') +
                 ((ed.settings.allow_captioned_images && f0.elements['caption'].checked) ? ' captioned' : '') +
                 (ImageDialog.current_class == '' ? '' : ' ' + ImageDialog.current_class)
         };
-
-        el = ed.selection.getNode();
 
         if (el && el.nodeName == 'IMG') {
             ed.dom.setAttribs(el, args);

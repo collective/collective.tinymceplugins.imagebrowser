@@ -4,7 +4,10 @@ Changelog
 1.0b5 (unreleased)
 ------------------
  
-* Fixed wording [joka]
+* Fixed: do not delete existing img classes 
+  [joka]
+* Fixed wording 
+  [joka]
 
 1.0b4 (2011-11-24)
 ------------------
