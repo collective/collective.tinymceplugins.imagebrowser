@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0b5 (unreleased)
+1.0b5 (2011-12-21)
 ------------------
  
 * Fixed: do not delete existing img classes 
