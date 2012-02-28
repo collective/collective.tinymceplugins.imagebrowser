@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.0b6dev (unreleased)
+---------------------
+
+- Fixed include path of Javascript files for compatibility with TinyMCE 1.2.9.
+  [Julian Infanger]
+
+
 1.0b5 (2011-12-21)
 ------------------
  
